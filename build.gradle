@@ -4,6 +4,7 @@ version '1.0'
 apply plugin: 'java'
 
 def jdkVersion = 1.7
+def fileEncoding='UTF-8'
 sourceCompatibility = jdkVersion
 targetCompatibility = jdkVersion
 
@@ -21,7 +22,11 @@ dependencies {
 }
 
 tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+    options.encoding = fileEncoding
+}
+
+test{
+  systemProperty('file.encoding',fileEncoding)
 }
 
 apply plugin: 'idea'
